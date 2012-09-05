@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# chameleon - use the right color, to the right place.
+# by Thiago Rondon <thiago@aware.com.br>, http://github.com/thiagorondon
+#
+# To install, just do:
+# sudo curl -X GET https://raw.github.com/thiagorondon/chameleon/master/chameleon > /usr/bin/chameleon
+
+all_pm="apt-get yum port zypper"
+current_pm=
+
+for pm in $all_pm 
+do
+    if [ `which $pm -s` ]
+    then
+        current_pm=$pm
+        break
+    fi
+done
+
+$current_pm $*
