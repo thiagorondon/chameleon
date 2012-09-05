@@ -14,11 +14,16 @@ current_pm=
 
 for pm in $all_pm 
 do
-    if which $pm >/dev/null
+    if which $pm >/dev/null 2>&1
     then
         current_pm=$pm
         break
     fi
 done
 
-$current_pm $*
+if [ "$current_pm" ]
+then
+    $current_pm $*
+else
+    echo "What is your package manager ?"
+fi
