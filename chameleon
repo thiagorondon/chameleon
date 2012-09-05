@@ -4,14 +4,17 @@
 # by Thiago Rondon <thiago@aware.com.br>, http://github.com/thiagorondon
 #
 # To install, just do:
-# sudo curl -X GET https://raw.github.com/thiagorondon/chameleon/master/chameleon > /usr/bin/chameleon
+# sudo curl -X GET \
+#   https://raw.github.com/thiagorondon/chameleon/master/chameleon > \
+#   /usr/bin/chameleon ; chmod +x /usr/bin/chameleon
+#
 
 all_pm="apt-get yum port zypper"
 current_pm=
 
 for pm in $all_pm 
 do
-    if [ `which $pm -s` ]
+    if which $pm >/dev/null
     then
         current_pm=$pm
         break
